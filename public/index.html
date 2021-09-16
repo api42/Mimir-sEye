@@ -1,178 +1,38 @@
 <!DOCTYPE html>
-<html>
-
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Welcome to Firebase Hosting</title>
-
-  <!-- update the version number as needed -->
-  <script defer src="/__/firebase/9.0.2/firebase-app-compat.js"></script>
-  <!-- include only the Firebase features as you need -->
-  <script defer src="/__/firebase/9.0.2/firebase-auth-compat.js"></script>
-  <script defer src="/__/firebase/9.0.2/firebase-database-compat.js"></script>
-  <script defer src="/__/firebase/9.0.2/firebase-firestore-compat.js"></script>
-  <script defer src="/__/firebase/9.0.2/firebase-functions-compat.js"></script>
-  <script defer src="/__/firebase/9.0.2/firebase-messaging-compat.js"></script>
-  <script defer src="/__/firebase/9.0.2/firebase-storage-compat.js"></script>
-  <script defer src="/__/firebase/9.0.2/firebase-analytics-compat.js"></script>
-  <script defer src="/__/firebase/9.0.2/firebase-remote-config-compat.js"></script>
-  <script defer src="/__/firebase/9.0.2/firebase-performance-compat.js"></script>
-  <!-- 
-      initialize the SDK after all desired features are loaded, set useEmulator to false
-      to avoid connecting the SDK to running emulators.
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
-  <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.0.8/css/all.css"
+    />
+    <title>React App</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
 
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" />
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <link rel="stylesheet" href="css/styles.css" />
-  <script src="js/main.js"></script>
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
 
-  <script src="https://use.fontawesome.com/34cdb0139a.js"></script>
-
-</head>
-
-<body>
-  <div>
-    <div class="container center">
-      <div class="block">
-
-        <!-- Start: Header, title, rating and add reviwe buttons -->
-        
-        <div>
-          <span class="header"> The Minimalist Entrepreneur </span>
-        </div>
-        <div class="flex margin-top-2 just">
-          <div class="flex">
-            <div class="font-size-1">4.2</div>
-            <section class="rating-widget">
-              <div class="rating-stars text-center">
-                <ul id="stars1">
-                  <div class="stars-outer">
-                    <div class="stars-inner" style="width: 80%">
-                    </div>
-                  </div>
-            </section>
-          </div>
-          <div class="box-layout-small wrapper">
-            <button class="modal-toggle button wrapper">Add Review</button>
-          </div>
-        </div>
-
-        <!-- End: Header, title, rating and add reviwe buttons -->
-
-
-        <!-- Start: Reviews Display  -->
-
-        <div class="divider"></div>
-
-        <div class="section-scroll">
-          <div class="subheader">Reviews</div>
-          <ul id="thingsList"></ul>
-        </div>
-
-        <!-- End: Reviews Display  -->
-
-
-        <!-- Start: Add review Modal  -->
-
-        <div class="modal">
-          <div class="modal-overlay modal-toggle"></div>
-          <div class="modal-wrapper modal-transition">
-            <div class="modal-layout">
-              <div class="header">What's your rating?</div>
-              <div class="margin-top-2">Rating</div>
-
-              <div class="flex margin-top-1">
-                <section class="rating-widget">
-                  <div class="rating-stars text-center" style="margin-left: -4px">
-                    <ul id="stars">
-                      <li class="star" title="Poor" data-value="1">
-                        <i class="fa fa-star fa-fw"></i>
-                      </li>
-                      <li class="star" title="Fair" data-value="2">
-                        <i class="fa fa-star fa-fw"></i>
-                      </li>
-                      <li class="star" title="Good" data-value="3">
-                        <i class="fa fa-star fa-fw"></i>
-                      </li>
-                      <li class="star" title="Excellent" data-value="4">
-                        <i class="fa fa-star fa-fw"></i>
-                      </li>
-                      <li class="star" title="WOW!!!" data-value="5">
-                        <i class="fa fa-star fa-fw"></i>
-                      </li>
-                    </ul>
-                  </div>
-                </section>
-              </div>
-
-              <div class="margin-top-1">Review</div>
-              <div class="margin-top-2">
-                <input class="" id="reviewtext" placeholder="Start typing..." />
-              </div>
-              <div class="margin-top-2 button-2">
-                <div class="box-layout-small wrapper">
-                  <button id="createThing" class="modal-toggle button wrapper button-lay-2">
-                    Submit review
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- End: Add review Modal  -->
-
-      </div>
-    </div>
-  </div>
-
-  <script>
-    $(".modal-toggle").on("click", function (e) {
-      e.preventDefault();
-      $(".modal").toggleClass("is-visible");
-    });
-
-    document.addEventListener("DOMContentLoaded", function () {
-      const loadEl = document.querySelector("#load");
-      // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-      // // The Firebase SDK is initialized and available here!
-      //
-      // firebase.auth().onAuthStateChanged(user => { });
-      // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-      // firebase.firestore().doc('/foo/bar').get().then(() => { });
-      // firebase.functions().httpsCallable('yourFunction')().then(() => { });
-      // firebase.messaging().requestPermission().then(() => { });
-      // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-      // firebase.analytics(); // call to activate
-      // firebase.analytics().logEvent('tutorial_completed');
-      // firebase.performance(); // call to activate
-      //
-      // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-
-      try {
-        let app = firebase.app();
-        let features = [
-          "auth",
-          "database",
-          "firestore",
-          "functions",
-          "messaging",
-          "storage",
-          "analytics",
-          "remoteConfig",
-          "performance",
-        ].filter((feature) => typeof app[feature] === "function");
-      } catch (e) {
-        console.error(e);
-      }
-    });
-  </script>
-
-  <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
-    integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
-</body>
-
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  </body>
 </html>
